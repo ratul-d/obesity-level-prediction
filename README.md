@@ -6,8 +6,6 @@
 
 This project applies data analytics and machine learning techniques to estimate obesity levels in individuals based on their eating habits and physical conditions. Using the *Estimation of Obesity Levels Based on Eating Habits and Physical Condition* dataset from the UCI Machine Learning Repository, the analysis explores lifestyle factors influencing obesity and builds predictive models to classify individuals into obesity categories.
 
-The work demonstrates end-to-end skills in exploratory data analysis (EDA), feature engineering, model development, and performance evaluation, reflecting a complete data science workflow suitable for both academic and professional contexts.
-
 ---
 
 ## Objectives
@@ -63,7 +61,8 @@ obesity-level-prediction/
 ├── models/               # Trained model artifacts
 │
 ├── results/
-│   ├── figures/          # Correlation heatmap, confusion matrix, etc.
+│   ├── accuracy_figures/          # Figures of model accuracies
+│   ├── analysis_figures/          # Figures from analysis
 │   └── metrics/          # Model performance and comparison files
 │
 ├── requirements.txt
@@ -101,9 +100,21 @@ obesity-level-prediction/
 
 ## Results Summary
 
-* Achieved **95.7%** classification accuracy using Random Forest.
+* Achieved **95%** classification accuracy using Random Forest.
 * Age, weight, daily water intake (CH2O), eating between meals (CAEC), and family history of overweight were among the key factors associated with obesity.
 * Visualization results show clear trends between sedentary habits and higher obesity categories.
+
+### Model Performance Metrics
+
+| Model                | Training Accuracy | Testing Accuracy | Notes |
+|----------------------|------------------:|-----------------:|:------|
+| Logistic Regression  | 0.8418 | 0.8274 | Baseline linear model |
+| Naive Bayes          | 0.5806 | 0.6052 | Underfitting; assumes independence |
+| Decision Tree        | 1.0000 | 0.9196 | Overfitting evident |
+| Random Forest        | 1.0000 | 0.9433 | Best overall performance |
+| KNN                  | 0.9117 | 0.8723 | Good balance of bias-variance |
+
+Among all models, **Random Forest** achieved the best generalization performance, balancing predictive power and robustness against overfitting.
 
 ---
 
