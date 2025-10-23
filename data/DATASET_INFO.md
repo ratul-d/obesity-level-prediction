@@ -1,4 +1,10 @@
-# Dataset Info
+# Dataset Description
+
+**Source:** [UCI Machine Learning Repository – Estimation of Obesity Levels Based on Eating Habits and Physical Condition](https://doi.org/10.24432/C5H31Z)  
+**Authors:** Fabio Mendoza Palechor, Alexis De la Hoz Manotas (2019)  
+**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+## Dataset Info
 
 | Variable Name                  | Role    | Type        | Description                                                   | Missing Values |
 |--------------------------------|---------|-------------|---------------------------------------------------------------|----------------|
