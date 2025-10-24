@@ -54,16 +54,16 @@ This project applies data analytics and machine learning techniques to estimate 
 ```
 obesity-level-prediction/
 ├── data/
-│   ├── raw/              # Original dataset
-│   └── processed/        # Cleaned and feature-engineered data
+│   ├── raw/                       # Original dataset
+│   └── processed/                 # Cleaned and feature-engineered data
 │
-├── notebooks/            # Jupyter notebooks for analysis and modeling
-├── models/               # Trained model artifacts
+├── jupyter_notebooks/             # Jupyter notebooks for analysis and modeling
+├── models/                        # Trained model artifacts
 │
 ├── results/
 │   ├── accuracy_figures/          # Figures of model accuracies
 │   ├── analysis_figures/          # Figures from analysis
-│   └── metrics/          # Model performance and comparison files
+│   └── metrics/                   # Model performance and comparison files
 │
 ├── requirements.txt
 └── README.md
@@ -98,23 +98,54 @@ obesity-level-prediction/
 
 ---
 
-## Results Summary
+## Results and Analysis
 
-* Achieved **95%** classification accuracy using Random Forest.
-* Age, weight, daily water intake (CH2O), eating between meals (CAEC), and family history of overweight were among the key factors associated with obesity.
-* Visualization results show clear trends between sedentary habits and higher obesity categories.
+The predictive models developed for obesity classification were rigorously evaluated using multiple metrics, including accuracy, precision, recall, F1-score, and feature importance. The evaluation highlights model performance, robustness, and the influence of key lifestyle and demographic features.
 
-### Model Performance Metrics
+### Model Performance Overview
 
-| Model                | Training Accuracy | Testing Accuracy | Notes |
-|----------------------|------------------:|-----------------:|:------|
-| Logistic Regression  | 0.8418 | 0.8274 | Baseline linear model |
-| Naive Bayes          | 0.5806 | 0.6052 | Underfitting; assumes independence |
-| Decision Tree        | 1.0000 | 0.9196 | Overfitting evident |
-| Random Forest        | 1.0000 | 0.9433 | Best overall performance |
-| KNN                  | 0.9117 | 0.8723 | Good balance of bias-variance |
+<p align="center">
+  <img src="results/accuracy_figures/Model%20Comparisons%20A.png" alt="Precision-Recall Curves" width="900">
+</p>
 
-Among all models, **Random Forest** achieved the best generalization performance, balancing predictive power and robustness against overfitting.
+Among all models, **Random Forest** demonstrated the best generalization performance, achieving **94.33% test accuracy** while effectively balancing predictive power and resistance to overfitting.
+
+
+
+---
+
+### Precision-Recall Analysis
+
+The precision-recall curves provide a detailed view of model performance across all obesity categories, emphasizing the trade-offs between precision and recall for minority classes.
+
+<p align="center">
+  <img src="results/accuracy_figures/Precision-Recall%20Curves.png" alt="Precision-Recall Curves" width="600">
+</p>
+
+*Figure 1: Precision-Recall curves for all models, illustrating classification effectiveness across obesity categories.*
+
+Analysis of these curves indicates that **Random Forest and Decision Tree models maintain high precision and recall across most classes**, while Naive Bayes struggles with class imbalance.
+
+---
+
+### Feature Importance Across Models
+
+Feature importance analysis highlights the most influential variables in predicting obesity levels. Random Forest feature ranking shows that both demographic and lifestyle factors significantly contribute to model predictions.
+
+![Feature Importance Across Models](results/accuracy_figures/Feature%20Importance%20Across%20Models.png)
+*Figure 2: Feature importance scores across models.*
+
+These insights align with domain knowledge, confirming that **sedentary habits, dietary patterns, and genetic predisposition** are strong determinants of obesity.
+
+---
+
+### Key Observations
+
+* **Random Forest** consistently outperforms baseline models across multiple evaluation metrics.
+* Features such as **weight, height, gender and age** are most predictive of obesity levels.
+* Visualizations from exploratory data analysis indicate a clear trend between **sedentary lifestyle behaviors and higher obesity categories**, providing actionable insights for intervention strategies.
+
+Overall, the combination of model performance metrics, precision-recall analysis, and feature importance evaluation provides a **comprehensive understanding of predictive factors** and highlights the robustness of ensemble methods like Random Forest for multi-class obesity classification.
 
 ---
 
