@@ -105,32 +105,32 @@ The predictive models developed for obesity classification were rigorously evalu
 ### Model Performance Overview
 
 <p align="center">
-  <img src="results/accuracy_figures/Model%20TRAIN-TEST%20Accuracies.png" alt="Precision-Recall Curves" width="550">
+  <img src="results/accuracy_figures/Model%20TRAIN-TEST%20Accuracies.png" alt="Model TRAIN-TEST Accuracies" width="550">
 </p>
 
 <p align="center">
-  <img src="results/accuracy_figures/Model%20Comparisons%20A.png" alt="Precision-Recall Curves" width="900">
+  <img src="results/accuracy_figures/Model%20Comparisons%20A.png" alt="Model Comparisons A" width="900">
 </p>
 
 Among all models, **Random Forest** demonstrated the best generalization performance, achieving **~95% test accuracy** while effectively balancing predictive power and resistance to overfitting.
 
 
+### Precision-Recall and ROC Curve Analysis
 
----
+The **Precision-Recall (PR)** and **Receiver Operating Characteristic (ROC)** curves provide complementary perspectives on model performance across all obesity categories.
 
-### Precision-Recall Analysis
-
-The precision-recall curves provide a detailed view of model performance across all obesity categories, emphasizing the trade-offs between precision and recall for minority classes.
+* The **Precision-Recall curves** emphasize the trade-off between precision (positive predictive value) and recall (sensitivity), which is especially informative for **imbalanced datasets** where certain obesity classes are underrepresented.
+* The **ROC curves**, on the other hand, illustrate the relationship between the **True Positive Rate (TPR)** and **False Positive Rate (FPR)**, offering a broader view of overall classification performance.
 
 <p align="center">
-  <img src="results/accuracy_figures/Precision-Recall%20Curves.png" alt="Precision-Recall Curves" width="600">
+  <img src="results/accuracy_figures/Precision-Recall%20Curves.png" alt="Precision-Recall Curves" width="45%">
+  <img src="results/accuracy_figures/ROC%20Curves.png" alt="ROC Curves" width="45%">
 </p>
 
-*Figure 1: Precision-Recall curves for all models.*
+*Figure 1: Precision-Recall and ROC curves for all models.*
 
-Analysis of these curves indicates that **Random Forest and Decision Tree models maintain high precision and recall across most classes**, while Naive Bayes struggles with class imbalance.
+Analysis of these curves indicates that **Random Forest and Decision Tree models maintain strong performance**, demonstrating **high precision, recall, and AUC scores** across most obesity categories. In contrast, **Naive Bayes shows noticeable sensitivity to class imbalance**, resulting in reduced precision and recall for minority classes.
 
----
 
 ### Feature Importance Across Models
 
@@ -141,7 +141,6 @@ Feature importance analysis highlights the most influential variables in predict
 
 These insights align with domain knowledge, confirming that **sedentary habits, dietary patterns, and genetic predisposition** are strong determinants of obesity.
 
----
 
 ### Key Observations
 
@@ -153,10 +152,64 @@ Overall, the combination of model performance metrics, precision-recall analysis
 
 ---
 
+## Further Model Improvements
+
+To systematically enhance predictive performance beyond baseline models, an iterative modeling approach was adopted. Starting with **hyperparameter tuning** of the Random Forest (RF) model, the process progressively advanced through **boosting algorithms** and **ensemble integration techniques**, resulting in substantial gains in accuracy and generalization capability.
+
+
+### 1. Hyperparameter Tuning
+
+Using **GridSearchCV**, optimal hyperparameters were identified for the **Random Forest (RF)** model to improve predictive accuracy and control overfitting.
+The tuning process explored multiple parameter categories, including:
+
+* `n_estimators` – number of trees in the forest
+* `max_depth` – maximum depth of each decision tree
+* `min_samples_leaf` – minimum number of samples required at a leaf node
+* `max_features` – fraction of features considered for each split
+* `criterion` – function used to measure split quality
+* `bootstrap` – whether bootstrap samples are used when building trees
+
+This optimization **improved the model’s accuracy from 94.7% to 95.9%**, demonstrating the strong impact of parameter refinement on model stability and generalization.
+
+
+### 2. Progressive Model Development
+
+Following the optimized Random Forest, **boosting-based algorithms** — **XGBoost (95.7%)** and **LightGBM (96.6%)** — were introduced to further improve performance by leveraging gradient boosting and efficient leaf-wise learning.
+These models achieved superior accuracy through enhanced gradient optimization and regularization mechanisms, outperforming traditional bagging approaches.
+
+To capture the complementary strengths of these individual learners, **ensemble meta-learning** strategies were applied.
+A **Stacking Classifier** (Logistic Regression as meta-model) achieved **96.6% accuracy**, integrating diverse model outputs for stronger generalization.
+Finally, a **Voting Classifier** (soft voting) combined all tuned models, reaching the **highest overall accuracy of 96.9%**, marking the peak of performance improvement across all stages.
+
+
+### 3. Model Performance Comparison (Post-Tuning)
+
+<p align="center">
+  <img src="results/accuracy_figures/Tuned%20Model%20Accuracies.png" alt="Tuned Model Accuracies" width="550">
+</p>
+
+
+### 4. Ensemble Insights
+
+* **LightGBM** achieved **96.6% accuracy**, leveraging gradient-based one-side sampling and leaf-wise tree growth for efficient learning.
+* **Stacking Classifier** (Logistic Regression meta-model) reached **96.6% accuracy**, confirming the synergy among base learners.
+* **Voting Classifier** delivered the **highest accuracy (96.9%)**, demonstrating that blending diverse tuned models yields the most stable and reliable predictions.
+* **Random Forest** and **XGBoost** achieved **95.9%** and **95.7%** accuracy respectively, providing a strong foundation for subsequent ensemble improvements.
+* Overall, the progression from individual optimization to meta-ensemble integration substantially enhanced model robustness and performance across obesity categories.
+
+
+### 5. Key Takeaways
+
+* **Stepwise refinement** — from Random Forest tuning to boosting and ensemble integration — consistently improved model accuracy.
+* **Boosting algorithms** such as **LightGBM** and **XGBoost** outperformed traditional ensembles, capturing complex multi-class patterns effectively.
+* **Stacking and voting** strategies provided the final performance lift, ensuring strong generalization and stable multi-class classification.
+
+---
+
 ## Technologies Used
 
 * **Programming Language:** Python
-* **Libraries:** pandas, numpy, matplotlib, seaborn, scikit-learn
+* **Libraries:** pandas, numpy, matplotlib, seaborn, scikit-learn, scikit-learn-intelex, xgboost, lightgbm
 * **Environment:** Jupyter Notebook
 
 ---
