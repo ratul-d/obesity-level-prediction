@@ -105,10 +105,14 @@ The predictive models developed for obesity classification were rigorously evalu
 ### Model Performance Overview
 
 <p align="center">
+  <img src="results/accuracy_figures/Model%20TRAIN-TEST%20Accuracies.png" alt="Precision-Recall Curves" width="550">
+</p>
+
+<p align="center">
   <img src="results/accuracy_figures/Model%20Comparisons%20A.png" alt="Precision-Recall Curves" width="900">
 </p>
 
-Among all models, **Random Forest** demonstrated the best generalization performance, achieving **94.33% test accuracy** while effectively balancing predictive power and resistance to overfitting.
+Among all models, **Random Forest** demonstrated the best generalization performance, achieving **~95% test accuracy** while effectively balancing predictive power and resistance to overfitting.
 
 
 
@@ -122,7 +126,7 @@ The precision-recall curves provide a detailed view of model performance across 
   <img src="results/accuracy_figures/Precision-Recall%20Curves.png" alt="Precision-Recall Curves" width="600">
 </p>
 
-*Figure 1: Precision-Recall curves for all models, illustrating classification effectiveness across obesity categories.*
+*Figure 1: Precision-Recall curves for all models.*
 
 Analysis of these curves indicates that **Random Forest and Decision Tree models maintain high precision and recall across most classes**, while Naive Bayes struggles with class imbalance.
 
