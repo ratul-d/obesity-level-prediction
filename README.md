@@ -188,6 +188,9 @@ Finally, a **Voting Classifier** (soft voting) combined all tuned models, reachi
   <img src="results/accuracy_figures/Tuned%20Model%20Accuracies.png" alt="Tuned Model Accuracies" width="550">
 </p>
 
+<p align="center">
+  <img src="results/accuracy_figures/Model%20Comparisons%20C.png" alt="Model Comparisons C" width="750">
+</p>
 
 ### 4. Ensemble Insights
 
